@@ -1,13 +1,19 @@
 
 -- 抽奖策略表
 CREATE TABLE `strategy` (
-    `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
-    `strategy_id` int NOT NULL COMMENT '抽奖策略ID',
-    `strategy_desc` varchar(128) NOT NULL COMMENT '抽奖策略描述',
-    `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-    `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='抽奖策略表';
+                            `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+                            `strategy_id` bigint(8) NOT NULL COMMENT '抽奖策略ID',
+                            `strategy_desc` varchar(128) NOT NULL COMMENT '抽奖策略描述',
+                            `rule_models` varchar(256) DEFAULT NULL COMMENT '规则模型，rule配置的模型同步到此表，便于使用',
+                            `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                            `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                            PRIMARY KEY (`id`),
+                            KEY `idx_strategy_id` (`strategy_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `strategy` (`id`, `strategy_id`, `strategy_desc`, `rule_models`, `create_time`, `update_time`)
+VALUES
+    (1,10001,'抽奖策略','rule_weight,rule_blacklist',NOW(),NOW());
 
 -- 抽奖策略奖品表
 CREATE TABLE `strategy_award` (
@@ -28,7 +34,7 @@ CREATE TABLE `strategy_award` (
 CREATE TABLE `strategy_rule` (
      `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
      `strategy_id` int NOT NULL COMMENT '抽奖策略ID',
-     `award_id` int NOT NULL COMMENT '抽奖奖品ID',
+     `award_id` int COMMENT '抽奖奖品ID',
      `rule_type` int NOT NULL DEFAULT '0' COMMENT '抽奖规则类型【1-策略规则、2-奖品规则】',
      `rule_model` varchar(16) NOT NULL COMMENT '抽奖规则类型【rule_lock】',
      `rule_value` varchar(128) NOT NULL COMMENT '抽奖规则比值',

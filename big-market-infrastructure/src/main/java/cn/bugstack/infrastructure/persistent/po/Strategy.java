@@ -22,5 +22,7 @@ public class Strategy {
     private Date createTime;
     /** 更新时间 */
     private Date updateTime;
+    /** 抽奖规则模型 */
+    private String ruleModels;
 
 }

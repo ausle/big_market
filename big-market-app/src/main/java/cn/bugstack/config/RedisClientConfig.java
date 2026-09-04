@@ -11,6 +11,7 @@ import org.redisson.api.RedissonClient;
 import org.redisson.client.codec.BaseCodec;
 import org.redisson.client.protocol.Decoder;
 import org.redisson.client.protocol.Encoder;
+import org.redisson.codec.JsonJacksonCodec;
 import org.redisson.config.Config;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -34,7 +35,11 @@ public class RedisClientConfig {
         // 根据需要可以设定编解码器；https://github.com/redisson/redisson/wiki/4.-%E6%95%B0%E6%8D%AE%E5%BA%8F%E5%88%97%E5%8C%96
         // 默认redis会把java对象序列化为二进制存进redis。默认是使用JDK的二进制序列化起。在redis工具中查看数据，就会是乱码。
         // 这里指定json序列化器，会把java对象序列化为json字符串存进redis中。
-//        config.setCodec(new RedisCodec());
+//        config.setCodec(new RedisCodec());  这种写法是有问题的。
+        // 使用jackson做序列化和反序列化，序列化时，会把java对象序列化为json字符串存进redis中。
+        // 反序列时，会把redis中的json字符串反序列化为java对象。
+        config.setCodec(new JsonJacksonCodec());
+
         config.useSingleServer()
                 .setAddress("redis://" + properties.getHost() + ":" + properties.getPort())
                 .setConnectionPoolSize(properties.getPoolSize())
