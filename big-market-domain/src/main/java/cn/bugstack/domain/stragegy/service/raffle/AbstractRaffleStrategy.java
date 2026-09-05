@@ -50,9 +50,9 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
             throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(), ResponseCode.ILLEGAL_PARAMETER.getInfo());
         }
 
-
-        ILogicChain logicChain = defaultChainFactory.openLogicChain(strategyId);
-
+        // 获取该策略下的抽奖规则，加上默认的规则，组成一个责任链：黑名单规则————积分规则————默认规则。
+        // 会按责任链上的规则进行抽奖，黑名单规则和积分规则抽出的奖品，直接返回。
+        // 默认规则抽出的奖品，还需进行额外操作。
         DefaultChainFactory.StrategyAwardVO chainStrategyAwardVO = raffleLogicChain(userId, strategyId);
 
         log.info("抽奖策略计算-责任链 {} {} {} {}", userId, strategyId, chainStrategyAwardVO.getAwardId(), chainStrategyAwardVO.getLogicModel());
