@@ -4,6 +4,7 @@ package cn.bugstack.domain.stragegy.respository;
 import cn.bugstack.domain.stragegy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.stragegy.model.entity.StrategyEntity;
 import cn.bugstack.domain.stragegy.model.entity.StrategyRuleEntity;
+import cn.bugstack.domain.stragegy.model.vo.RuleTreeVO;
 import cn.bugstack.domain.stragegy.model.vo.StrategyAwardRuleModelVO;
 
 import java.util.List;
@@ -36,5 +37,13 @@ public interface IStrategyRepository {
 
 
     StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
+
+    /**
+     * 根据规则树ID，查询树结构信息
+     *
+     * @param treeId 规则树ID
+     * @return 树结构信息
+     */
+    RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
 
 }
