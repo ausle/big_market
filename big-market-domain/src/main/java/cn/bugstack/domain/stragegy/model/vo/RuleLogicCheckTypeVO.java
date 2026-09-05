@@ -1,4 +1,4 @@
-package cn.bugstack.domain.stragegy.model.enums;
+package cn.bugstack.domain.stragegy.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

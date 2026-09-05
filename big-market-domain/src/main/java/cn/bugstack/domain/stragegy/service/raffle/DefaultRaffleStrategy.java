@@ -3,7 +3,7 @@ package cn.bugstack.domain.stragegy.service.raffle;
 import cn.bugstack.domain.stragegy.model.entity.RaffleFactorEntity;
 import cn.bugstack.domain.stragegy.model.entity.RuleActionEntity;
 import cn.bugstack.domain.stragegy.model.entity.RuleMatterEntity;
-import cn.bugstack.domain.stragegy.model.enums.RuleLogicCheckTypeVO;
+import cn.bugstack.domain.stragegy.model.vo.RuleLogicCheckTypeVO;
 import cn.bugstack.domain.stragegy.respository.IStrategyRepository;
 import cn.bugstack.domain.stragegy.service.armory.IStrategyDispatch;
 import cn.bugstack.domain.stragegy.service.factory.DefaultLogicFactory;

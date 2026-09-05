@@ -47,6 +47,8 @@ public class LogicChainTest {
 //        log.info("测试结果：{}", strategyArmory.assembleLotteryStrategy(100003L));
     }
 
+
+    // 测试抽奖
     @Test
     public void test_performRaffle() {
         RaffleFactorEntity raffleFactorEntity = RaffleFactorEntity.builder()

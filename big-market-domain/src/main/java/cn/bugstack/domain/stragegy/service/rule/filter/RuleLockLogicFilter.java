@@ -2,7 +2,7 @@ package cn.bugstack.domain.stragegy.service.rule.filter;
 
 import cn.bugstack.domain.stragegy.model.entity.RuleActionEntity;
 import cn.bugstack.domain.stragegy.model.entity.RuleMatterEntity;
-import cn.bugstack.domain.stragegy.model.enums.RuleLogicCheckTypeVO;
+import cn.bugstack.domain.stragegy.model.vo.RuleLogicCheckTypeVO;
 import cn.bugstack.domain.stragegy.respository.IStrategyRepository;
 import cn.bugstack.domain.stragegy.service.annotation.LogicStrategy;
 import cn.bugstack.domain.stragegy.service.factory.DefaultLogicFactory;

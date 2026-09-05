@@ -4,7 +4,7 @@ package cn.bugstack.domain.stragegy.respository;
 import cn.bugstack.domain.stragegy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.stragegy.model.entity.StrategyEntity;
 import cn.bugstack.domain.stragegy.model.entity.StrategyRuleEntity;
-import cn.bugstack.domain.stragegy.model.enums.StrategyAwardRuleModelVO;
+import cn.bugstack.domain.stragegy.model.vo.StrategyAwardRuleModelVO;
 
 import java.util.List;
 import java.util.Map;

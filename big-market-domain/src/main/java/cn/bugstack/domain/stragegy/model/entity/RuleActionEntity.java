@@ -1,6 +1,6 @@
 package cn.bugstack.domain.stragegy.model.entity;
 
-import cn.bugstack.domain.stragegy.model.enums.RuleLogicCheckTypeVO;
+import cn.bugstack.domain.stragegy.model.vo.RuleLogicCheckTypeVO;
 import lombok.*;
 
 /**

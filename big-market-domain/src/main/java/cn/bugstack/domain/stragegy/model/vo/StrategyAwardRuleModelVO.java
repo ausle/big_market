@@ -1,4 +1,4 @@
-package cn.bugstack.domain.stragegy.model.enums;
+package cn.bugstack.domain.stragegy.model.vo;
 
 import cn.bugstack.domain.stragegy.service.factory.DefaultLogicFactory;
 import cn.bugstack.types.common.Constants;
