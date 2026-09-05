@@ -4,6 +4,7 @@ package cn.bugstack.domain.stragegy.respository;
 import cn.bugstack.domain.stragegy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.stragegy.model.entity.StrategyEntity;
 import cn.bugstack.domain.stragegy.model.entity.StrategyRuleEntity;
+import cn.bugstack.domain.stragegy.model.enums.StrategyAwardRuleModelVO;
 
 import java.util.List;
 import java.util.Map;
@@ -30,5 +31,10 @@ public interface IStrategyRepository {
     StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleModel);
 
     String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel);
+
+    String queryStrategyRuleValue(Long strategyId, String ruleModel);
+
+
+    StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
 
 }

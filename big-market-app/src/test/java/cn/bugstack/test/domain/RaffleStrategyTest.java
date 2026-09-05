@@ -5,7 +5,6 @@ import cn.bugstack.domain.stragegy.model.entity.RaffleAwardEntity;
 import cn.bugstack.domain.stragegy.model.entity.RaffleFactorEntity;
 import cn.bugstack.domain.stragegy.service.IRaffleStrategy;
 import cn.bugstack.domain.stragegy.service.armory.IStrategyArmory;
-import cn.bugstack.domain.stragegy.service.impl.RuleWeightLogicFilter;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -30,8 +29,8 @@ public class RaffleStrategyTest {
     @Resource
     private IRaffleStrategy raffleStrategy;
 
-    @Resource
-    private RuleWeightLogicFilter ruleWeightLogicFilter;
+//    @Resource
+//    private RuleWeightLogicFilter ruleWeightLogicFilter;
 
     @Resource
     private IStrategyArmory strategyArmory;
@@ -40,7 +39,7 @@ public class RaffleStrategyTest {
     public void setUp() {
         // 对该策略进行数据装配
         boolean success = strategyArmory.assembleLotteryStrategy(10001L);
-        ReflectionTestUtils.setField(ruleWeightLogicFilter, "userScore", 40500L);
+//        ReflectionTestUtils.setField(ruleWeightLogicFilter, "userScore", 40500L);
     }
 
     @Test

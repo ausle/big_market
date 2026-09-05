@@ -11,7 +11,7 @@
         <result column="award_count" property="awardCount"/>
         <result column="award_count_surplus" property="awardCountSurplus"/>
         <result column="award_rate" property="awardRate"/>
-<!--        <result column="rule_models" property="ruleModels"/>-->
+        <result column="rule_models" property="ruleModels"/>
         <result column="sort" property="sort"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
@@ -29,4 +29,8 @@
         where strategy_id = #{strategy_id}
     </select>
 
+    <select id="queryStrategyAwardRuleModels" parameterType="cn.bugstack.infrastructure.persistent.po.StrategyAward" resultType="java.lang.String">
+        select rule_models from strategy_award
+        where strategy_id = #{strategyId} and award_id = #{awardId}
+    </select>
 </mapper>

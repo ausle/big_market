@@ -1,6 +1,7 @@
 package cn.bugstack.infrastructure.persistent.dao;
 
 import cn.bugstack.infrastructure.persistent.po.Strategy;
+import cn.bugstack.infrastructure.persistent.po.StrategyAward;
 import cn.bugstack.infrastructure.persistent.po.StrategyRule;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -20,4 +21,7 @@ public interface IStrategyRuleDao {
 
 
     String queryStrategyRuleValue(StrategyRule strategyRule);
+
+
+    String queryStrategyAwardRuleModels(StrategyAward strategyAward);
 }
