@@ -1,0 +1,16 @@
+package cn.bugstack.domain.stragegy.service.rule;
+
+
+import cn.bugstack.domain.stragegy.model.entity.RuleActionEntity;
+import cn.bugstack.domain.stragegy.model.entity.RuleMatterEntity;
+
+/**
+ * @author Fuzhengwei bugstack.cn @小傅哥
+ * @description 抽奖规则过滤接口
+ * @create 2024-01-06 09:55
+ */
+public interface ILogicFilter<T extends RuleActionEntity.RaffleEntity> {
+
+    RuleActionEntity<T> filter(RuleMatterEntity ruleMatterEntity);
+
+}

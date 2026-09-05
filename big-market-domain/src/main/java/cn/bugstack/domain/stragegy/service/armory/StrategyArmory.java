@@ -1,8 +1,8 @@
 package cn.bugstack.domain.stragegy.service.armory;
 
-import cn.bugstack.domain.stragegy.entity.StrategyAwardEntity;
-import cn.bugstack.domain.stragegy.entity.StrategyEntity;
-import cn.bugstack.domain.stragegy.entity.StrategyRuleEntity;
+import cn.bugstack.domain.stragegy.model.entity.StrategyAwardEntity;
+import cn.bugstack.domain.stragegy.model.entity.StrategyEntity;
+import cn.bugstack.domain.stragegy.model.entity.StrategyRuleEntity;
 import cn.bugstack.domain.stragegy.respository.IStrategyRepository;
 import cn.bugstack.types.enums.ResponseCode;
 import cn.bugstack.types.exception.AppException;

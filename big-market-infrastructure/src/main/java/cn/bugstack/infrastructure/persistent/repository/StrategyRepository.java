@@ -1,8 +1,8 @@
 package cn.bugstack.infrastructure.persistent.repository;
 
-import cn.bugstack.domain.stragegy.entity.StrategyAwardEntity;
-import cn.bugstack.domain.stragegy.entity.StrategyEntity;
-import cn.bugstack.domain.stragegy.entity.StrategyRuleEntity;
+import cn.bugstack.domain.stragegy.model.entity.StrategyAwardEntity;
+import cn.bugstack.domain.stragegy.model.entity.StrategyEntity;
+import cn.bugstack.domain.stragegy.model.entity.StrategyRuleEntity;
 import cn.bugstack.domain.stragegy.respository.IStrategyRepository;
 import cn.bugstack.infrastructure.persistent.dao.IStrategyAwardDao;
 import cn.bugstack.infrastructure.persistent.dao.IStrategyDao;
@@ -114,5 +114,14 @@ public class StrategyRepository implements IStrategyRepository {
                 .ruleValue(strategyRuleRes.getRuleValue())
                 .ruleDesc(strategyRuleRes.getRuleDesc())
                 .build();
+    }
+
+    @Override
+    public String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel) {
+        StrategyRule strategyRule = new StrategyRule();
+        strategyRule.setStrategyId(strategyId);
+        strategyRule.setAwardId(awardId);
+        strategyRule.setRuleModel(ruleModel);
+        return strategyRuleDao.queryStrategyRuleValue(strategyRule);
     }
 }

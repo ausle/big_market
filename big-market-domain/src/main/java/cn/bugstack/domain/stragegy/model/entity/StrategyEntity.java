@@ -1,4 +1,4 @@
-package cn.bugstack.domain.stragegy.entity;
+package cn.bugstack.domain.stragegy.model.entity;
 
 import cn.bugstack.types.common.Constants;
 import lombok.AllArgsConstructor;
