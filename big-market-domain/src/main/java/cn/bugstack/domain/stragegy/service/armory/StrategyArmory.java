@@ -4,6 +4,7 @@ import cn.bugstack.domain.stragegy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.stragegy.model.entity.StrategyEntity;
 import cn.bugstack.domain.stragegy.model.entity.StrategyRuleEntity;
 import cn.bugstack.domain.stragegy.respository.IStrategyRepository;
+import cn.bugstack.types.common.Constants;
 import cn.bugstack.types.enums.ResponseCode;
 import cn.bugstack.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,16 @@ public class StrategyArmory implements IStrategyArmory, IStrategyDispatch {
         // 1、策略奖品数据的装配
         // 查出某个策略下的奖品信息，根据中奖概率，生成一定数量同比例的奖品id到redis中。
         List<StrategyAwardEntity> strategyAwardEntities = repository.queryStrategyAwardList(strategyId);
+
+
+        // 1.2、该策略下的奖品库存的装配，添加到redis缓存中。
+        for (StrategyAwardEntity strategyAward : strategyAwardEntities) {
+            // 该策略下的奖品id和奖品库存数量
+            Integer awardId = strategyAward.getAwardId();
+            Integer awardCount = strategyAward.getAwardCount();
+            cacheStrategyAwardCount(strategyId, awardId, awardCount);
+        }
+
         assembleLotteryStrategy(String.valueOf(strategyId), strategyAwardEntities);
 
         // 2. 权重策略配置，适用于 rule_weight的情况
@@ -122,4 +133,22 @@ public class StrategyArmory implements IStrategyArmory, IStrategyDispatch {
         return repository.getStrategyAwardAssemble(key, new SecureRandom().nextInt(rateRange));
     }
 
+    /**
+     * 缓存奖品库存到Redis
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @param awardCount 奖品库存
+     */
+    private void cacheStrategyAwardCount(Long strategyId, Integer awardId, Integer awardCount) {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
+        repository.cacheStrategyAwardCount(cacheKey, awardCount);
+    }
+
+
+    @Override
+    public Boolean subtractionAwardStock(Long strategyId, Integer awardId) {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
+        return repository.subtractionAwardStock(cacheKey);
+    }
 }

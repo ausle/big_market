@@ -9,6 +9,9 @@ import cn.bugstack.infrastructure.persistent.dao.*;
 import cn.bugstack.infrastructure.persistent.po.*;
 import cn.bugstack.infrastructure.persistent.redis.IRedisService;
 import cn.bugstack.types.common.Constants;
+import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RBlockingQueue;
+import org.redisson.api.RDelayedQueue;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Fuzhengwei bugstack.cn @小傅哥
@@ -23,6 +27,7 @@ import java.util.Map;
  * @create 2023-12-23 10:33
  */
 @Repository
+@Slf4j
 public class StrategyRepository implements IStrategyRepository {
 
 
@@ -195,5 +200,73 @@ public class StrategyRepository implements IStrategyRepository {
 
         redisService.setValue(cacheKey, ruleTreeVODB);
         return ruleTreeVODB;
+    }
+
+    @Override
+    public void cacheStrategyAwardCount(String cacheKey, Integer awardCount) {
+        if (redisService.isExists(cacheKey)) return;
+        // 设置一个long类型的值到缓存中，long是java中的类型，会被客户端序列为字符串，存在redis中的是字符串类型
+        // type "strategy_award_count_key_10001_102" : sring
+        redisService.setAtomicLong(cacheKey, awardCount);
+    }
+
+    @Override
+    public Boolean subtractionAwardStock(String cacheKey) {
+        /*
+            redissonClient.getAtomicLong(key).decrementAndGet();
+            相当于：Redis的DECR命令。
+            扣库存时，会有三个动作：查到库存，库存减1，更新库存到redis。
+            这三步，会作为一个不可分割的整体去执行。
+            surplus返回的值是扣减后的值。
+
+        假设有ABC三个线程，同时执行到decr，每个线层都向redis发了一个decr的请求。
+        Redis执行这些扣减操作时，会一个个来，就像售票员卖票一样，一个个排队处理。
+        */
+        long surplus = redisService.decr(cacheKey);
+        if (surplus < 0) {
+            // 库存小于0，恢复为0个
+            redisService.setValue(cacheKey, 0);
+            return false;
+        }
+        // 1. 按照cacheKey decr 后的值，如 99、98、97 和 key 组成为库存锁的key进行使用。
+        // 2. 加锁为了兜底，如果后续有恢复库存，手动处理等，也不会超卖。因为所有的可用库存key，都被加锁了。
+        String lockKey = cacheKey + Constants.UNDERLINE + surplus;
+        /*
+            为什么这里要加锁?
+            比如运营配置的库存是10个，现在卖掉了4个，现在库存是6。
+            也就是9,8,7,6加了锁。
+
+            但由于一些原因，运用重新配置库存，实际应该配置为6，但如果配置错了，配置为10。
+            那么扣减库存时，就会出现加锁失败，然后提示扣减失败。
+         */
+        Boolean lock = redisService.setNx(lockKey);
+        if (!lock) {
+            log.info("策略奖品库存加锁失败 {}", lockKey);
+        }
+        return lock;
+    }
+
+    @Override
+    public void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO) {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_QUERY_KEY;
+        // 库存扣减成功后，会把奖品信息放到redis的延迟队列中，等到3秒后，消息会自动进入blockingQueue中被消费。
+        RBlockingQueue<StrategyAwardStockKeyVO> blockingQueue = redisService.getBlockingQueue(cacheKey);
+        RDelayedQueue<StrategyAwardStockKeyVO> delayedQueue = redisService.getDelayedQueue(blockingQueue);
+        delayedQueue.offer(strategyAwardStockKeyVO, 3, TimeUnit.SECONDS);  // 先放到延迟队列，3秒后再投递到消费队列中。
+    }
+
+    @Override
+    public StrategyAwardStockKeyVO takeQueueValue() throws InterruptedException {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_QUERY_KEY;
+        RBlockingQueue<StrategyAwardStockKeyVO> destinationQueue = redisService.getBlockingQueue(cacheKey);
+        return destinationQueue.poll();
+    }
+
+    @Override
+    public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
+        StrategyAward strategyAward = new StrategyAward();
+        strategyAward.setStrategyId(strategyId);
+        strategyAward.setAwardId(awardId);
+        strategyAwardDao.updateStrategyAwardStock(strategyAward);
     }
 }

@@ -6,7 +6,9 @@ import cn.bugstack.domain.stragegy.model.entity.RuleMatterEntity;
 import cn.bugstack.domain.stragegy.model.vo.RuleLogicCheckTypeVO;
 import cn.bugstack.domain.stragegy.model.vo.RuleTreeVO;
 import cn.bugstack.domain.stragegy.model.vo.StrategyAwardRuleModelVO;
+import cn.bugstack.domain.stragegy.model.vo.StrategyAwardStockKeyVO;
 import cn.bugstack.domain.stragegy.respository.IStrategyRepository;
+import cn.bugstack.domain.stragegy.service.AbstractRaffleStrategy;
 import cn.bugstack.domain.stragegy.service.armory.IStrategyDispatch;
 import cn.bugstack.domain.stragegy.service.factory.DefaultLogicFactory;
 import cn.bugstack.domain.stragegy.service.rule.ILogicChain;
@@ -73,8 +75,8 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
         if (null == strategyAwardRuleModelVO) {
             return DefaultTreeFactory.StrategyAwardVO.builder().awardId(awardId).build();
         }
-//        RuleTreeVO ruleTreeVO = repository.queryRuleTreeVOByTreeId(strategyAwardRuleModelVO.getRuleModels());
-        RuleTreeVO ruleTreeVO = repository.queryRuleTreeVOByTreeId("tree_lock");
+        RuleTreeVO ruleTreeVO = repository.queryRuleTreeVOByTreeId(strategyAwardRuleModelVO.getRuleModels());
+//        RuleTreeVO ruleTreeVO = repository.queryRuleTreeVOByTreeId("tree_lock");
         if (null == ruleTreeVO) {
             throw new RuntimeException("存在抽奖策略配置的规则模型 Key，未在库表 rule_tree、rule_tree_node、rule_tree_line 配置对应的规则树信息 " + strategyAwardRuleModelVO.getRuleModels());
         }
@@ -82,4 +84,13 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
         return treeEngine.process(userId, strategyId, awardId);
     }
 
+    @Override
+    public StrategyAwardStockKeyVO takeQueueValue() throws InterruptedException {
+        return repository.takeQueueValue();
+    }
+
+    @Override
+    public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
+        repository.updateStrategyAwardStock(strategyId, awardId);
+    }
 }

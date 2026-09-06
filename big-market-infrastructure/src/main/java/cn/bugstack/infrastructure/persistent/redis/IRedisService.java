@@ -94,6 +94,13 @@ public interface IRedisService {
      */
     long decrBy(String key, long delta);
 
+    /**
+     * 设置值
+     *
+     * @param key   key 键
+     * @param value 值
+     */
+    void setAtomicLong(String key, long value);
 
     /**
      * 移除指定 key 的值
@@ -247,4 +254,6 @@ public interface IRedisService {
      */
     <T> RBloomFilter<T> getBloomFilter(String key);
 
+
+    Boolean setNx(String key);
 }
