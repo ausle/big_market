@@ -1,4 +1,4 @@
-package cn.bugstack.test.domain;
+package cn.bugstack.test.domain.straegy;
 
 import cn.bugstack.domain.stragegy.model.vo.*;
 import cn.bugstack.domain.stragegy.service.rule.tree.factory.DefaultTreeFactory;

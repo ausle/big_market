@@ -41,7 +41,6 @@ CREATE TABLE IF NOT EXISTS `rule_tree_node_line` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='规则树节点连线表';
 
 
-
 INSERT INTO `rule_tree`
 (`id`, `tree_id`, `tree_name`, `tree_desc`, `tree_node_rule_key`, `create_time`, `update_time`)
 VALUES

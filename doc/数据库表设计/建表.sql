@@ -31,6 +31,7 @@ CREATE TABLE `strategy_award` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='抽奖策略奖品表';
 
+-- 抽奖策略规则表
 CREATE TABLE `strategy_rule` (
      `id` int unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
      `strategy_id` int NOT NULL COMMENT '抽奖策略ID',

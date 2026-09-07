@@ -3,6 +3,7 @@ package cn.bugstack.domain.stragegy.service.raffle;
 import cn.bugstack.domain.stragegy.model.entity.RaffleFactorEntity;
 import cn.bugstack.domain.stragegy.model.entity.RuleActionEntity;
 import cn.bugstack.domain.stragegy.model.entity.RuleMatterEntity;
+import cn.bugstack.domain.stragegy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.stragegy.model.vo.RuleLogicCheckTypeVO;
 import cn.bugstack.domain.stragegy.model.vo.RuleTreeVO;
 import cn.bugstack.domain.stragegy.model.vo.StrategyAwardRuleModelVO;
@@ -20,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -92,5 +94,10 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
     @Override
     public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
         repository.updateStrategyAwardStock(strategyId, awardId);
+    }
+
+    @Override
+    public List<StrategyAwardEntity> queryRaffleStrategyAwardList(Long strategyId) {
+        return repository.queryStrategyAwardList(strategyId);
     }
 }

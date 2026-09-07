@@ -1,4 +1,4 @@
-package cn.bugstack.test.domain;
+package cn.bugstack.test.domain.straegy;
 
 
 import cn.bugstack.domain.stragegy.service.armory.IStrategyArmory;
