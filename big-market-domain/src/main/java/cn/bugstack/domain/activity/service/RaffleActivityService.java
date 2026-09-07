@@ -2,6 +2,7 @@ package cn.bugstack.domain.activity.service;
 
 import cn.bugstack.domain.activity.model.aggregate.CreateOrderAggregate;
 import cn.bugstack.domain.activity.model.entity.*;
+import cn.bugstack.domain.activity.model.vo.ActivitySkuStockKeyVO;
 import cn.bugstack.domain.activity.model.vo.OrderStateVO;
 import cn.bugstack.domain.activity.repository.IActivityRepository;
 import cn.bugstack.domain.activity.service.rule.factory.DefaultActivityChainFactory;
@@ -58,5 +59,25 @@ public class RaffleActivityService extends AbstractRaffleActivity {
     @Override
     protected void doSaveOrder(CreateOrderAggregate createOrderAggregate) {
         activityRepository.doSaveOrder(createOrderAggregate);
+    }
+
+    @Override
+    public ActivitySkuStockKeyVO takeQueueValue() throws InterruptedException {
+        return activityRepository.takeQueueValue();
+    }
+
+    @Override
+    public void clearQueueValue() {
+        activityRepository.clearQueueValue();
+    }
+
+    @Override
+    public void updateActivitySkuStock(Long sku) {
+        activityRepository.updateActivitySkuStock(sku);
+    }
+
+    @Override
+    public void clearActivitySkuStock(Long sku) {
+        activityRepository.clearActivitySkuStock(sku);
     }
 }

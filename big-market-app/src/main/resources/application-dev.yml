@@ -12,6 +12,17 @@ thread:
         block-queue-size: 5000
         policy: CallerRunsPolicy
 
+spring:
+  rabbitmq:
+    addresses: 192.168.55.120
+    port: 5672
+    username: root
+    password: root
+    listener:
+      simple:
+        prefetch: 1 # 每次投递n个消息，消费完在投递n个
+    topic:
+      activity_sku_stock_zero: activity_sku_stock_zero
 # 数据库配置；启动时配置数据库资源信息
 #spring:
 #  datasource:

@@ -367,3 +367,377 @@ org.redisson.client.RedisTimeoutException: Command execution timeout for command
 26-09-07.19:36:16.159 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
 26-09-07.19:36:26.566 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
 26-09-07.19:36:29.661 [main            ] INFO  RaffleOrderTest        - 测试结果：697312714612
+26-09-07.22:45:00.955 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 17.0.14 on DESKTOP-VADTIRO with PID 1424 (started by asule in D:\coding\project\xfg_project\big-market\big-market-app)
+26-09-07.22:45:00.957 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+26-09-07.22:45:01.851 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-09-07.22:45:01.854 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-09-07.22:45:01.899 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
+26-09-07.22:45:03.456 [main            ] INFO  Version                - Redisson 3.23.4
+26-09-07.22:45:03.751 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.55.200/192.168.55.200:6379
+26-09-07.22:45:03.766 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.55.200/192.168.55.200:6379
+26-09-07.22:45:04.323 [main            ] WARN  GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroCustomer': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'raffleActivityService' defined in file [D:\coding\project\xfg_project\big-market\big-market-domain\target\classes\cn\bugstack\domain\activity\service\RaffleActivityService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activityRepository': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroMessageEvent': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+26-09-07.22:45:04.350 [main            ] INFO  ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+26-09-07.22:45:04.365 [main            ] ERROR SpringApplication      - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroCustomer': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'raffleActivityService' defined in file [D:\coding\project\xfg_project\big-market\big-market-domain\target\classes\cn\bugstack\domain\activity\service\RaffleActivityService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activityRepository': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroMessageEvent': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:136)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:141)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:90)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:248)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'raffleActivityService' defined in file [D:\coding\project\xfg_project\big-market\big-market-domain\target\classes\cn\bugstack\domain\activity\service\RaffleActivityService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activityRepository': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroMessageEvent': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:520)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:673)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:228)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:329)
+	... 43 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activityRepository': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroMessageEvent': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 61 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroMessageEvent': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeanByName(AbstractAutowireCapableBeanFactory.java:479)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:550)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:520)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:673)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:228)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:329)
+	... 73 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:191)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:936)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	... 87 common frames omitted
+26-09-07.22:45:04.366 [main            ] ERROR TestContextManager     - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@68c9d179] to prepare test instance [cn.bugstack.test.domain.activity.RaffleOrderTest@27d6267e]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:248)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroCustomer': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'raffleActivityService' defined in file [D:\coding\project\xfg_project\big-market\big-market-domain\target\classes\cn\bugstack\domain\activity\service\RaffleActivityService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activityRepository': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroMessageEvent': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:136)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:141)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:90)
+	... 27 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'raffleActivityService' defined in file [D:\coding\project\xfg_project\big-market\big-market-domain\target\classes\cn\bugstack\domain\activity\service\RaffleActivityService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activityRepository': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroMessageEvent': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:520)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:673)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:228)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:329)
+	... 43 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activityRepository': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroMessageEvent': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 61 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'activitySkuStockZeroMessageEvent': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.resolveBeanByName(AbstractAutowireCapableBeanFactory.java:479)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:550)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:520)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:673)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:228)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessProperties(CommonAnnotationBeanPostProcessor.java:329)
+	... 73 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'spring.rabbitmq.topic.activity_sku_stock_zero' in value "${spring.rabbitmq.topic.activity_sku_stock_zero}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180)
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126)
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239)
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210)
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:191)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:936)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	... 87 common frames omitted
+26-09-07.22:47:04.817 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 17.0.14 on DESKTOP-VADTIRO with PID 20100 (started by asule in D:\coding\project\xfg_project\big-market\big-market-app)
+26-09-07.22:47:04.818 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+26-09-07.22:47:05.541 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-09-07.22:47:05.543 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-09-07.22:47:05.582 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
+26-09-07.22:47:06.899 [main            ] INFO  Version                - Redisson 3.23.4
+26-09-07.22:47:07.185 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.55.200/192.168.55.200:6379
+26-09-07.22:47:07.200 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.55.200/192.168.55.200:6379
+26-09-07.22:47:09.104 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+26-09-07.22:47:09.171 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:47:30.179 [main            ] INFO  SimpleMessageListenerContainer - Broker not available; cannot force queue declarations during start: java.net.ConnectException: Connection timed out: no further information
+26-09-07.22:47:30.185 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:47:35.197 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] ERROR SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:70)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:603)
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:725)
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:252)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2210)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2183)
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2163)
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:463)
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:447)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1942)
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1915)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1384)
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1230)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: java.io.IOException: null
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:129)
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:125)
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:396)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1225)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1173)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:641)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:616)
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:566)
+	... 12 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66)
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36)
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502)
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326)
+	... 17 common frames omitted
+Caused by: java.io.EOFException: null
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:296)
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91)
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:184)
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:665)
+	... 1 common frames omitted
+26-09-07.22:47:35.200 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:47:40.203 [AMQP Connection 192.168.55.120:5672] WARN  ForgivingExceptionHandler - An unexpected connection driver error occurred (Exception message: Socket closed)
+26-09-07.22:47:40.223 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 35.747 seconds (JVM running for 36.445)
+26-09-07.22:47:45.200 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:47:49.961 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] INFO  SimpleMessageListenerContainer - Restarting Consumer@1f7b1d6a: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+26-09-07.22:47:49.963 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:47:50.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:47:50.062 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+26-09-07.22:47:50.802 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+26-09-07.22:47:55.530 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] ERROR SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+26-09-07.22:47:55.529 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:47:55.531 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:48:04.291 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:48:07.882 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:48:18.524 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Restarting Consumer@7a6928a8: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+26-09-07.22:48:18.523 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:48:18.528 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:48:26.094 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:48:26.094 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] ERROR SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+26-09-07.22:48:26.094 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:48:26.096 [main            ] INFO  RaffleOrderTest        - 装配活动：true
+26-09-07.22:48:28.052 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:30.688 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:48:30.690 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.306 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.307 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.317 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.317 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.328 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.329 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.338 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.339 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.349 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.350 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.360 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.361 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.371 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.371 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.382 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.383 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.396 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.397 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.412 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.412 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.421 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.422 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.429 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.430 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.438 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.439 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.463 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.463 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.471 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.471 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.480 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.480 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.489 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.489 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.498 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.498 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:33.506 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息【有效期、状态、库存(sku)】校验开始。sku:9011 activityId:100301
+26-09-07.22:48:33.507 [main            ] WARN  RaffleOrderTest        - 活动未开启（非open状态）
+26-09-07.22:48:35.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:48:38.298 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] INFO  SimpleMessageListenerContainer - Restarting Consumer@40c46572: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+26-09-07.22:48:38.300 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:48:40.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:48:43.302 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] ERROR SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+26-09-07.22:48:43.302 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:48:43.303 [AMQP Connection 192.168.55.120:5672] WARN  ForgivingExceptionHandler - An unexpected connection driver error occurred (Exception message: Socket closed)
+26-09-07.22:48:45.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:48:48.306 [AMQP Connection 192.168.55.120:5672] WARN  ForgivingExceptionHandler - An unexpected connection driver error occurred (Exception message: Socket closed)
+26-09-07.22:48:50.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:48:53.316 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] INFO  SimpleMessageListenerContainer - Restarting Consumer@7d1d84e: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+26-09-07.22:48:53.317 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:48:55.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:48:58.317 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] ERROR SimpleMessageListenerContainer - Failed to check/redeclare auto-delete queue(s).
+26-09-07.22:48:58.318 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]
+26-09-07.22:48:58.318 [AMQP Connection 192.168.55.120:5672] WARN  ForgivingExceptionHandler - An unexpected connection driver error occurred (Exception message: Socket closed)
+26-09-07.22:49:00.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:49:03.319 [AMQP Connection 192.168.55.120:5672] WARN  ForgivingExceptionHandler - An unexpected connection driver error occurred (Exception message: Socket closed)
+26-09-07.22:49:05.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-07.22:49:08.335 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] INFO  SimpleMessageListenerContainer - Restarting Consumer@306093e7: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+26-09-07.22:49:08.335 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.120:5672]

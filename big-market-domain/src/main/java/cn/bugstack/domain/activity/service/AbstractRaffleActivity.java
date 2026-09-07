@@ -17,7 +17,7 @@ import org.apache.commons.lang3.StringUtils;
  * @create 2024-03-16 08:42
  */
 @Slf4j
-public abstract class AbstractRaffleActivity implements IRaffleOrder {
+public abstract class AbstractRaffleActivity implements IRaffleOrder,ISkuStock {
 
     protected IActivityRepository activityRepository;
     protected DefaultActivityChainFactory defaultActivityChainFactory;
