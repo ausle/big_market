@@ -35,4 +35,7 @@ public interface IActivityRepository {
 
     void clearActivitySkuStock(Long sku);
 
+
+    void activitySkuStockConsumeSendQueue(ActivitySkuStockKeyVO activitySkuStockKeyVO);
+
 }

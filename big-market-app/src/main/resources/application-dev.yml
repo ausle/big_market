@@ -14,7 +14,7 @@ thread:
 
 spring:
   rabbitmq:
-    addresses: 192.168.55.120
+    addresses: 192.168.55.200
     port: 5672
     username: root
     password: root
