@@ -10,6 +10,7 @@ import cn.bugstack.domain.stragegy.model.vo.StrategyAwardRuleModelVO;
 import cn.bugstack.domain.stragegy.model.vo.StrategyAwardStockKeyVO;
 import cn.bugstack.domain.stragegy.respository.IStrategyRepository;
 import cn.bugstack.domain.stragegy.service.AbstractRaffleStrategy;
+import cn.bugstack.domain.stragegy.service.IRaffleRule;
 import cn.bugstack.domain.stragegy.service.armory.IStrategyDispatch;
 import cn.bugstack.domain.stragegy.service.factory.DefaultLogicFactory;
 import cn.bugstack.domain.stragegy.service.rule.ILogicChain;
@@ -31,7 +32,7 @@ import java.util.Map;
  */
 @Slf4j
 @Service
-public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
+public class DefaultRaffleStrategy extends AbstractRaffleStrategy, IRaffleRule {
 
     @Resource
     private DefaultLogicFactory logicFactory;
@@ -98,5 +99,16 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
     @Override
     public List<StrategyAwardEntity> queryRaffleStrategyAwardList(Long strategyId) {
         return repository.queryStrategyAwardList(strategyId);
+    }
+
+    @Override
+    public List<StrategyAwardEntity> queryRaffleStrategyAwardListByActivityId(Long activityId) {
+        Long strategyId = repository.queryStrategyIdByActivityId(activityId);
+        return queryRaffleStrategyAwardList(strategyId);
+    }
+
+    @Override
+    public Map<String, Integer> queryAwardRuleLockCount(String[] treeIds) {
+        return repository.queryAwardRuleLockCount(treeIds);
     }
 }
