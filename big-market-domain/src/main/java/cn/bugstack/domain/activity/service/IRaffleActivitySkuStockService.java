@@ -8,13 +8,10 @@ import cn.bugstack.domain.activity.model.vo.ActivitySkuStockKeyVO;
  * @description 活动sku库存处理接口
  * @create 2024-03-30 09:55
  */
-public interface ISkuStock {
+public interface IRaffleActivitySkuStockService {
 
     /**
-     * 获取活动sku库存消耗队列
-     *
-     * @return 奖品库存Key信息
-     * @throws InterruptedException 异常
+     * 获取活动sku库存消息队列，MQ会读取队列的消息，更新库存到数据库。
      */
     ActivitySkuStockKeyVO takeQueueValue() throws InterruptedException;
 

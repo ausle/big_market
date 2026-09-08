@@ -1,9 +1,8 @@
 package cn.bugstack.domain.activity.repository;
 
 import cn.bugstack.domain.activity.model.aggregate.CreateOrderAggregate;
-import cn.bugstack.domain.activity.model.entity.ActivityCountEntity;
-import cn.bugstack.domain.activity.model.entity.ActivityEntity;
-import cn.bugstack.domain.activity.model.entity.ActivitySkuEntity;
+import cn.bugstack.domain.activity.model.aggregate.CreatePartakeOrderAggregate;
+import cn.bugstack.domain.activity.model.entity.*;
 import cn.bugstack.domain.activity.model.vo.ActivitySkuStockKeyVO;
 
 import java.util.Date;
@@ -37,5 +36,16 @@ public interface IActivityRepository {
 
 
     void activitySkuStockConsumeSendQueue(ActivitySkuStockKeyVO activitySkuStockKeyVO);
+
+
+    UserRaffleOrderEntity queryNoUsedRaffleOrder(PartakeRaffleActivityEntity partakeRaffleActivityEntity);
+
+    ActivityAccountEntity queryActivityAccountByUserId(String userId, Long activityId);
+
+    ActivityAccountMonthEntity queryActivityAccountMonthByUserId(String userId, Long activityId, String month);
+
+    ActivityAccountDayEntity queryActivityAccountDayByUserId(String userId, Long activityId, String day);
+
+    void saveCreatePartakeOrderAggregate(CreatePartakeOrderAggregate createPartakeOrderAggregate);
 
 }

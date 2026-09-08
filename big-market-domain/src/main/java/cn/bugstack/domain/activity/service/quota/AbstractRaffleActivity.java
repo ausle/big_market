@@ -1,10 +1,11 @@
-package cn.bugstack.domain.activity.service;
+package cn.bugstack.domain.activity.service.quota;
 
 import cn.bugstack.domain.activity.model.aggregate.CreateOrderAggregate;
 import cn.bugstack.domain.activity.model.entity.*;
 import cn.bugstack.domain.activity.repository.IActivityRepository;
-import cn.bugstack.domain.activity.service.rule.IActionChain;
-import cn.bugstack.domain.activity.service.rule.factory.DefaultActivityChainFactory;
+import cn.bugstack.domain.activity.service.IRaffleActivityAccountQuotaService;
+import cn.bugstack.domain.activity.service.quota.rule.IActionChain;
+import cn.bugstack.domain.activity.service.quota.rule.factory.DefaultActivityChainFactory;
 import cn.bugstack.types.enums.ResponseCode;
 import cn.bugstack.types.exception.AppException;
 import com.alibaba.fastjson.JSON;
@@ -17,7 +18,7 @@ import org.apache.commons.lang3.StringUtils;
  * @create 2024-03-16 08:42
  */
 @Slf4j
-public abstract class AbstractRaffleActivity implements IRaffleOrder,ISkuStock {
+public abstract class AbstractRaffleActivity implements IRaffleActivityAccountQuotaService {
 
     protected IActivityRepository activityRepository;
     protected DefaultActivityChainFactory defaultActivityChainFactory;
@@ -44,7 +45,7 @@ public abstract class AbstractRaffleActivity implements IRaffleOrder,ISkuStock {
     }
 
     @Override
-    public String createSkuRechargeOrder(SkuRechargeEntity skuRechargeEntity) {
+    public String createOrder(SkuRechargeEntity skuRechargeEntity) {
         // 1. 参数校验
         String userId = skuRechargeEntity.getUserId();
         Long sku = skuRechargeEntity.getSku();

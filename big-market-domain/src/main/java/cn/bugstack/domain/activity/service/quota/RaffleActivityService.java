@@ -1,11 +1,13 @@
-package cn.bugstack.domain.activity.service;
+package cn.bugstack.domain.activity.service.quota;
 
 import cn.bugstack.domain.activity.model.aggregate.CreateOrderAggregate;
 import cn.bugstack.domain.activity.model.entity.*;
 import cn.bugstack.domain.activity.model.vo.ActivitySkuStockKeyVO;
 import cn.bugstack.domain.activity.model.vo.OrderStateVO;
 import cn.bugstack.domain.activity.repository.IActivityRepository;
-import cn.bugstack.domain.activity.service.rule.factory.DefaultActivityChainFactory;
+import cn.bugstack.domain.activity.service.IRaffleActivitySkuStockService;
+import cn.bugstack.domain.activity.service.quota.AbstractRaffleActivity;
+import cn.bugstack.domain.activity.service.quota.rule.factory.DefaultActivityChainFactory;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ import java.util.Date;
  * @create 2024-03-16 08:41
  */
 @Service
-public class RaffleActivityService extends AbstractRaffleActivity {
+public class RaffleActivityService extends AbstractRaffleActivity implements IRaffleActivitySkuStockService {
 
     @Resource
     protected IActivityRepository activityRepository;
