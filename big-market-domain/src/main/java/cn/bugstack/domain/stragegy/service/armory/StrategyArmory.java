@@ -29,11 +29,22 @@ public class StrategyArmory implements IStrategyArmory, IStrategyDispatch {
     private IStrategyRepository repository;
 
     @Override
+    public boolean assembleLotteryStrategyByActivityId(Long activityId) {
+        Long strategyId = repository.queryStrategyIdByActivityId(activityId);
+        return assembleLotteryStrategy(strategyId);
+    }
+
+
+    @Override
     public boolean assembleLotteryStrategy(Long strategyId) {
         // 1、策略奖品数据的装配
         // 查出某个策略下的奖品信息，根据中奖概率，生成一定数量同比例的奖品id到redis中。
         List<StrategyAwardEntity> strategyAwardEntities = repository.queryStrategyAwardList(strategyId);
 
+        if (strategyAwardEntities == null || strategyAwardEntities.isEmpty()){
+            log.error("该策略没有奖品数据可装配 strategyId:{} ",strategyId);
+            return false;
+        }
 
         // 1.2、该策略下的奖品库存的装配，添加到redis缓存中。
         for (StrategyAwardEntity strategyAward : strategyAwardEntities) {

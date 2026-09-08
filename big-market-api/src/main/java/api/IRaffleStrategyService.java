@@ -14,10 +14,10 @@ import java.util.List;
  * @description 抽奖服务接口
  * @create 2024-02-14 09:33
  */
-public interface IRaffleService {
+public interface IRaffleStrategyService {
 
     /**
-     * 策略装配接口
+     * 策略装配接口：
      *
      * @param strategyId 策略ID
      * @return 装配结果

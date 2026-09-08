@@ -1,6 +1,6 @@
 package cn.bugstack.trigger.http;
 
-import api.IRaffleService;
+import api.IRaffleStrategyService;
 import api.dto.RaffleAwardListRequestDTO;
 import api.dto.RaffleAwardListResponseDTO;
 import api.dto.RaffleRequestDTO;
@@ -30,8 +30,8 @@ import java.util.List;
 @Slf4j
 @RestController()
 @CrossOrigin("${app.config.cross-origin}")
-@RequestMapping("/api/${app.config.api-version}/raffle/")
-public class RaffleController implements IRaffleService {
+@RequestMapping("/api/${app.config.api-version}/raffle/strategy")
+public class RaffleStrategyController implements IRaffleStrategyService {
 
     @Resource
     private IRaffleAward raffleAward;
@@ -92,7 +92,7 @@ public class RaffleController implements IRaffleService {
                         .awardId(strategyAward.getAwardId())
                         .awardTitle(strategyAward.getAwardTitle())
                         .awardSubtitle(strategyAward.getAwardSubtitle())
-                        .sort(strategyAward.getSort())
+//                        .sort(strategyAward.getSort())
                         .build());
             }
             Response<List<RaffleAwardListResponseDTO>> response = Response.<List<RaffleAwardListResponseDTO>>builder()
