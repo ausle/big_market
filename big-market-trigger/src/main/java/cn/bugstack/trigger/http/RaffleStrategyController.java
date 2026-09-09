@@ -111,6 +111,7 @@ public class RaffleStrategyController implements IRaffleStrategyService {
             // 6. 遍历填充数据
             List<RaffleAwardListResponseDTO> raffleAwardListResponseDTOS = new ArrayList<>(strategyAwardEntities.size());
             for (StrategyAwardEntity strategyAward : strategyAwardEntities) {
+                // 抽中多少次解锁，获取这些规则的次数。
                 Integer awardRuleLockCount = ruleLockCountMap.get(strategyAward.getRuleModels());
                 raffleAwardListResponseDTOS.add(RaffleAwardListResponseDTO.builder()
                         .awardId(strategyAward.getAwardId())
@@ -119,6 +120,7 @@ public class RaffleStrategyController implements IRaffleStrategyService {
                         .sort(strategyAward.getSort())
                         .awardRuleLockCount(awardRuleLockCount)
                         .isAwardUnlock(null == awardRuleLockCount || dayPartakeCount >= awardRuleLockCount)
+                        // awardRuleLockCount不为NULL，代表是抽中多少次解锁。
                         .waitUnLockCount(null == awardRuleLockCount || awardRuleLockCount <= dayPartakeCount ? 0 : awardRuleLockCount - dayPartakeCount)
                         .build());
             }

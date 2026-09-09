@@ -30,9 +30,10 @@ import java.util.Map;
  * @description 默认的抽奖策略实现
  * @create 2024-01-06 11:46
  */
+
 @Slf4j
 @Service
-public class DefaultRaffleStrategy extends AbstractRaffleStrategy, IRaffleRule {
+public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleRule{
 
     @Resource
     private DefaultLogicFactory logicFactory;
