@@ -3,6 +3,7 @@ package cn.bugstack.domain.stragegy.service;
 import cn.bugstack.domain.stragegy.model.entity.RaffleAwardEntity;
 import cn.bugstack.domain.stragegy.model.entity.RaffleFactorEntity;
 import cn.bugstack.domain.stragegy.model.entity.RuleActionEntity;
+import cn.bugstack.domain.stragegy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.stragegy.model.vo.RuleLogicCheckTypeVO;
 import cn.bugstack.domain.stragegy.model.vo.StrategyAwardRuleModelVO;
 import cn.bugstack.domain.stragegy.respository.IStrategyRepository;
@@ -66,10 +67,14 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy,IRaffleS
         DefaultTreeFactory.StrategyAwardVO treeStrategyAwardVO = raffleLogicTree(userId, strategyId, chainStrategyAwardVO.getAwardId());
         log.info("抽奖策略计算-规则树 {} {} {} {}", userId, strategyId, treeStrategyAwardVO.getAwardId(), treeStrategyAwardVO.getAwardRuleValue());
 
+        Integer awardId = treeStrategyAwardVO.getAwardId();
+        StrategyAwardEntity strategyAward = repository.queryStrategyAwardEntity(strategyId, awardId);
+
         // 4. 返回抽奖结果
         return RaffleAwardEntity.builder()
                 .awardId(treeStrategyAwardVO.getAwardId())
                 .awardConfig(treeStrategyAwardVO.getAwardRuleValue())
+                .awardTitle(strategyAward.getAwardTitle())
                 .build();
 
     }

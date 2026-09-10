@@ -86,7 +86,9 @@ public class AwardRepository implements IAwardRepository {
         }
 
         try {
-            // 发送消息【在事务外执行，如果失败还有任务补偿】
+            // 会同步的执行这段代码
+            // MQ的异步指的是，生产者发送消息，不用等待消费方消费消息。投递到了MQ，线程继续往下执行。
+            // 发送消息【在事务外执行，如果失败还有任务补偿】，
             eventPublisher.publish(task.getTopic(), task.getMessage());
             // 更新数据库记录，task 任务表
             taskDao.updateTaskSendMessageCompleted(task);
