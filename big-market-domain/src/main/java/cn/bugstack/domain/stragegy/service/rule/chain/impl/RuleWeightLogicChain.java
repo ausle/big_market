@@ -51,6 +51,10 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
         // 积分规则，积分降序排列
         analyticalSortedKeys.sort(Comparator.reverseOrder());
 
+        // 查用户账户表，查该用户参加该活动，已经使用的抽奖次数，当做积分。
+        Integer userScore = repository.queryActivityAccountTotalUseCount(userId, strategyId);
+
+
         // 3. 找出最小符合的值，也就是【4500 积分，能找到 4000:102,103,104,105】、【5000 积分，能找到 5000:102,103,104,105,106,107】
         Long nextValue = analyticalSortedKeys.stream()
                 .filter(key -> userScore >= key)

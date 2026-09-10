@@ -28,5 +28,7 @@ public class Constants {
 
         // 某个sku对应的总库存
         public static String ACTIVITY_SKU_STOCK_COUNT_KEY = "activity_sku_stock_count_key_";
+
+        public static String STRATEGY_RULE_WEIGHT_KEY = "strategy_rule_weight_key_";
     }
 }

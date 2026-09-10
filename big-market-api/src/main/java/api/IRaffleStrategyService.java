@@ -1,10 +1,7 @@
 package api;
 
 
-import api.dto.RaffleAwardListRequestDTO;
-import api.dto.RaffleAwardListResponseDTO;
-import api.dto.RaffleRequestDTO;
-import api.dto.RaffleResponseDTO;
+import api.dto.*;
 import cn.bugstack.types.model.Response;
 
 import java.util.List;
@@ -39,5 +36,14 @@ public interface IRaffleStrategyService {
      * @return 抽奖结果
      */
     Response<RaffleResponseDTO> randomRaffle(RaffleRequestDTO requestDTO);
+
+
+    /**
+     * 查询抽奖策略权重规则，给用户展示出抽奖N次后必中奖奖品范围
+     *
+     * @param request 请求对象
+     * @return 权重奖品配置列表「这里会返回全部，前端可按需展示一条已达标的，或者一条要达标的」
+     */
+    Response<List<RaffleStrategyRuleWeightResponseDTO>> queryRaffleStrategyRuleWeight(RaffleStrategyRuleWeightRequestDTO request);
 
 }

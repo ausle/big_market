@@ -32,5 +32,7 @@ public class UserBehaviorRebateOrder {
     private Date createTime;
     /** 更新时间 */
     private Date updateTime;
+    /** 业务仿重ID - 外部透传，方便查询使用 */
+    private String outBusinessNo;
 
 }

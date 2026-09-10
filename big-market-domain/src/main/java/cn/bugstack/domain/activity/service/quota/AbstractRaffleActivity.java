@@ -55,11 +55,11 @@ public abstract class AbstractRaffleActivity implements IRaffleActivityAccountQu
         }
 
         // 2. 查询基础信息
-        // 2.1 通过sku查询活动信息
+        // 2.1 通过sku查询活动信息，查SKU对应的总库存、剩余总库存
         ActivitySkuEntity activitySkuEntity = activityRepository.queryActivitySku(sku);
-        // 2.2 查询活动信息
+        // 2.2 查询活动信息，活动的
         ActivityEntity activityEntity = activityRepository.queryRaffleActivityByActivityId(activitySkuEntity.getActivityId());
-        // 2.3 查询次数信息（用户在活动上可参与的次数）
+        // 2.3 查询次数信息（用户在活动上可参与的次数），活动次数
         ActivityCountEntity activityCountEntity =activityRepository.queryRaffleActivityCountByActivityCountId(activitySkuEntity.getActivityCountId());
         // 3. 活动动作规则校验 todo 后续处理规则过滤流程，暂时也不处理责任链结果
         IActionChain actionChain = defaultActivityChainFactory.openActionChain();

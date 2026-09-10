@@ -4,10 +4,7 @@ import cn.bugstack.domain.stragegy.model.entity.RaffleFactorEntity;
 import cn.bugstack.domain.stragegy.model.entity.RuleActionEntity;
 import cn.bugstack.domain.stragegy.model.entity.RuleMatterEntity;
 import cn.bugstack.domain.stragegy.model.entity.StrategyAwardEntity;
-import cn.bugstack.domain.stragegy.model.vo.RuleLogicCheckTypeVO;
-import cn.bugstack.domain.stragegy.model.vo.RuleTreeVO;
-import cn.bugstack.domain.stragegy.model.vo.StrategyAwardRuleModelVO;
-import cn.bugstack.domain.stragegy.model.vo.StrategyAwardStockKeyVO;
+import cn.bugstack.domain.stragegy.model.vo.*;
 import cn.bugstack.domain.stragegy.respository.IStrategyRepository;
 import cn.bugstack.domain.stragegy.service.AbstractRaffleStrategy;
 import cn.bugstack.domain.stragegy.service.IRaffleRule;
@@ -111,5 +108,16 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
     @Override
     public Map<String, Integer> queryAwardRuleLockCount(String[] treeIds) {
         return repository.queryAwardRuleLockCount(treeIds);
+    }
+
+    @Override
+    public List<RuleWeightVO> queryAwardRuleWeightByActivityId(Long activityId) {
+        Long strategyId = repository.queryStrategyIdByActivityId(activityId);
+        return queryAwardRuleWeight(strategyId);
+    }
+
+    @Override
+    public List<RuleWeightVO> queryAwardRuleWeight(Long strategyId) {
+        return repository.queryAwardRuleWeight(strategyId);
     }
 }
