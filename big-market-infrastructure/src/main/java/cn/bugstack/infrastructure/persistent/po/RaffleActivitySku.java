@@ -2,6 +2,7 @@ package cn.bugstack.infrastructure.persistent.po;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -11,6 +12,9 @@ import java.util.Date;
  */
 @Data
 public class RaffleActivitySku {
+
+
+    private long id;
 
     /**
      * 商品sku
@@ -41,5 +45,9 @@ public class RaffleActivitySku {
      * 更新时间
      */
     private Date updateTime;
+    /**
+     * 商品金额【积分】
+     */
+    private BigDecimal productAmount;
 
 }

@@ -31,4 +31,7 @@ public class TradeEntity {
     /** 业务仿重ID - 外部透传。返利、行为等唯一标识 */
     private String outBusinessNo;
 
+    // 是否需要发送积分对话次数成功的消息。
+    private boolean sendCreditAdjustMessage=true;
+
 }

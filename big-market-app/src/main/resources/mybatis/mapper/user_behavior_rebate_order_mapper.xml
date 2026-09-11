@@ -30,4 +30,9 @@
         where user_id = #{userId} and out_business_no = #{outBusinessNo}
     </select>
 
+    <delete id="deleteByUserId" parameterType="java.lang.String">
+        delete from user_behavior_rebate_order
+        where user_id = #{userId}
+    </delete>
+
 </mapper>

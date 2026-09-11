@@ -26,6 +26,7 @@ spring:
       # 发送奖品时，会发一条MQ消息，routingKey为send_award
       send_award: send_award
       send_rebate: send_rebate
+      credit_adjust_success: credit_adjust_success
 # 数据库配置；启动时配置数据库资源信息
 #spring:
 #  datasource:
