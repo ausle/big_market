@@ -90,3 +90,4 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'x
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
 	... 44 common frames omitted
+26-09-10.21:44:38.665 [main            ] WARN  RuleStockLogicTreeNode - 规则过滤-库存扣减-告警，库存不足。userId:xiaofuge strategyId:100001 awardId:100

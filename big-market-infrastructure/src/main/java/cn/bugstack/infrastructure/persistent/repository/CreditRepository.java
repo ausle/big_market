@@ -15,6 +15,8 @@ import cn.bugstack.infrastructure.persistent.po.UserCreditOrder;
 import cn.bugstack.infrastructure.persistent.redis.IRedisService;
 import cn.bugstack.middleware.db.router.strategy.IDBRouterStrategy;
 import cn.bugstack.types.common.Constants;
+import cn.bugstack.types.enums.ResponseCode;
+import cn.bugstack.types.exception.AppException;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
@@ -23,6 +25,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -80,7 +83,8 @@ public class CreditRepository implements ICreditRepository {
         task.setMessage(JSON.toJSONString(taskEntity.getMessage()));
         task.setState(taskEntity.getState().getCode());
 
-        RLock lock = redisService.getLock(Constants.RedisKey.USER_CREDIT_ACCOUNT_LOCK + userId + Constants.UNDERLINE + creditOrderEntity.getOutBusinessNo());
+        // 必须按用户加锁，不能把订单号拼进锁 Key，否则同一个用户的不同订单会并发扣减同一账户。
+        RLock lock = redisService.getLock(Constants.RedisKey.USER_CREDIT_ACCOUNT_LOCK + userId);
         try {
             lock.lock();
 //            lock.lock(3, TimeUnit.SECONDS);
@@ -91,8 +95,21 @@ public class CreditRepository implements ICreditRepository {
                     // 1. 保存账户积分
                     UserCreditAccount userCreditAccount = userCreditAccountDao.queryUserCreditAccount(userCreditAccountReq);
                     if (null == userCreditAccount) {
+                        // 用户还没有积分账户时，逆向交易不能直接创建负积分账户。
+                        if (creditAccountEntity.getAdjustAmount().signum() < 0) {
+                            status.setRollbackOnly();
+                            throw new AppException(ResponseCode.CREDIT_ACCOUNT_NOT_ENOUGH.getCode(), ResponseCode.CREDIT_ACCOUNT_NOT_ENOUGH.getInfo());
+                        }
                         userCreditAccountDao.insert(userCreditAccountReq);
                     } else {
+                        BigDecimal availableAmountAfterAdjust = userCreditAccount.getAvailableAmount()
+                                .add(creditAccountEntity.getAdjustAmount());
+                        if (availableAmountAfterAdjust.signum() < 0) {
+                            status.setRollbackOnly();
+                            log.warn("用户积分不足，不执行扣减 userId:{} availableAmount:{} adjustAmount:{} orderId:{}",
+                                    userId, userCreditAccount.getAvailableAmount(), creditAccountEntity.getAdjustAmount(), creditOrderEntity.getOrderId());
+                            throw new AppException(ResponseCode.CREDIT_ACCOUNT_NOT_ENOUGH.getCode(), ResponseCode.CREDIT_ACCOUNT_NOT_ENOUGH.getInfo());
+                        }
                         userCreditAccountDao.updateAddAmount(userCreditAccountReq);
                     }
                     // 2. 保存账户订单
@@ -104,6 +121,9 @@ public class CreditRepository implements ICreditRepository {
                 } catch (DuplicateKeyException e) {
                     status.setRollbackOnly();
                     log.error("调整账户积分额度异常，唯一索引冲突 userId:{} orderId:{}", userId, creditOrderEntity.getOrderId(), e);
+                } catch (AppException e) {
+                    status.setRollbackOnly();
+                    throw e;
                 } catch (Exception e) {
                     status.setRollbackOnly();
                     log.error("调整账户积分额度失败 userId:{} orderId:{}", userId, creditOrderEntity.getOrderId(), e);
@@ -137,6 +157,9 @@ public class CreditRepository implements ICreditRepository {
         try {
             dbRouter.doRouter(userId);
             UserCreditAccount userCreditAccount = userCreditAccountDao.queryUserCreditAccount(userCreditAccountReq);
+            if (null==userCreditAccount){
+                return CreditAccountEntity.builder().userId(userId).adjustAmount(new BigDecimal("0")).build();
+            }
             return CreditAccountEntity.builder().userId(userId).adjustAmount(userCreditAccount.getAvailableAmount()).build();
         } finally {
             dbRouter.clear();

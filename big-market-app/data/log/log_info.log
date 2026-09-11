@@ -193,3 +193,35 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'x
 26-09-10.10:27:24.640 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
 26-09-10.10:27:24.640 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
 26-09-10.10:27:24.640 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+26-09-10.21:43:21.825 [main            ] INFO  LogicTreeTest          - Starting LogicTreeTest using Java 17.0.14 on DESKTOP-VADTIRO with PID 6860 (started by asule in D:\coding\project\xfg_project\big-market\big-market-app)
+26-09-10.21:43:21.826 [main            ] INFO  LogicTreeTest          - The following 1 profile is active: "dev"
+26-09-10.21:43:22.684 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-09-10.21:43:22.689 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-09-10.21:43:22.730 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.
+26-09-10.21:43:23.894 [main            ] INFO  Version                - Redisson 3.23.4
+26-09-10.21:43:24.207 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.55.200/192.168.55.200:6379
+26-09-10.21:43:24.224 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.55.200/192.168.55.200:6379
+26-09-10.21:43:26.554 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+26-09-10.21:43:26.620 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.55.200:5672]
+26-09-10.21:43:26.656 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#649009d6:0/SimpleConnection@2932721e [delegate=amqp://root@192.168.55.200:5672/, localPort= 9362]
+26-09-10.21:43:26.720 [main            ] INFO  LogicTreeTest          - Started LogicTreeTest in 5.307 seconds (JVM running for 6.105)
+26-09-10.21:43:47.682 [main            ] INFO  RuleLockLogicTreeNode  - 规则过滤-次数锁 userId:xiaofuge strategyId:100001 awardId:100
+26-09-10.21:44:00.195 [scheduling-1    ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+26-09-10.21:44:02.676 [main            ] INFO  DecisionTreeEngine     - 决策树引擎【决策树规则；增加dall-e-3画图模型】treeId:100000001 node:rule_lock code:0000
+26-09-10.21:44:30.099 [main            ] INFO  RuleStockLogicTreeNode - 规则过滤-库存扣减 userId:xiaofuge strategyId:100001 awardId:100
+26-09-10.21:44:38.665 [main            ] WARN  RuleStockLogicTreeNode - 规则过滤-库存扣减-告警，库存不足。userId:xiaofuge strategyId:100001 awardId:100
+26-09-10.21:45:01.992 [main            ] INFO  DecisionTreeEngine     - 决策树引擎【决策树规则；增加dall-e-3画图模型】treeId:100000001 node:rule_stock code:0000
+26-09-10.21:45:06.430 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+26-09-10.21:45:06.431 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+26-09-10.21:45:06.432 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+26-09-10.21:45:06.486 [scheduling-1    ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+26-09-10.21:45:06.508 [scheduling-1    ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+26-09-10.21:45:06.529 [scheduling-1    ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+26-09-10.21:45:06.531 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务，更新活动sku库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-10.21:45:06.538 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-10.21:45:07.422 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+26-09-10.21:45:07.422 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+26-09-10.21:45:07.425 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+26-09-10.21:45:07.432 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+26-09-10.21:45:07.434 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+26-09-10.21:45:07.434 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped

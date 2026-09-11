@@ -329,7 +329,7 @@ public class RaffleActivityController implements IRaffleActivityService {
 
 
     /**
-     * 积分支付兑换商品
+     * 积分支付商品
      * @param request 请求对象「用户ID、商品ID」
      * @return
      */
@@ -338,6 +338,9 @@ public class RaffleActivityController implements IRaffleActivityService {
     public Response<Boolean> creditPayExchangeSku(SkuProductShopCartRequestDTO request) {
         try {
             log.info("积分兑换商品开始 userId:{} sku:{}", request.getUserId(), request.getSku());
+            // TODO，在这里判断，用户的积分是否可以支付，这个SKU的金额。
+
+
             // 1. 创建兑换商品sku订单，outBusinessNo 每次创建出一个单号。
             UnpaidActivityOrderEntity unpaidActivityOrder = raffleActivityAccountQuotaService.createOrder(SkuRechargeEntity.builder()
                     .userId(request.getUserId())
@@ -362,6 +365,14 @@ public class RaffleActivityController implements IRaffleActivityService {
                     .code(ResponseCode.SUCCESS.getCode())
                     .info(ResponseCode.SUCCESS.getInfo())
                     .data(true)
+                    .build();
+        } catch (AppException e) {
+            log.warn("积分兑换商品失败，积分不足或业务校验未通过 userId:{} sku:{} code:{} info:{}",
+                    request.getUserId(), request.getSku(), e.getCode(), e.getInfo());
+            return Response.<Boolean>builder()
+                    .code(e.getCode())
+                    .info(e.getInfo())
+                    .data(false)
                     .build();
         } catch (Exception e) {
             log.error("积分兑换商品失败 userId:{} sku:{}", request.getUserId(), request.getSku(), e);
