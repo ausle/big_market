@@ -14,7 +14,7 @@ thread:
 
 spring:
   rabbitmq:
-    addresses: 192.168.55.200
+    addresses: 192.168.52.200
     port: 5672
     username: root
     password: root
@@ -31,7 +31,7 @@ spring:
 #  datasource:
 #    username: root
 #    password: Jszc@2026
-#    url: jdbc:mysql://192.168.55.200:3306/big_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+#    url: jdbc:mysql://192.168.52.200:3306/big_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #  hikari:
 #    pool-name: Retail_HikariCP
@@ -57,7 +57,7 @@ mini-db-router:
       list: db01,db02
       db00:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.55.200:3306/big_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+        url: jdbc:mysql://192.168.52.200:3306/big_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
         username: root
         password: Jszc@2026
         type-class-name: com.zaxxer.hikari.HikariDataSource
@@ -72,7 +72,7 @@ mini-db-router:
           connection-test-query: SELECT 1
       db01:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.55.200:3306/big_market_01?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+        url: jdbc:mysql://192.168.52.200:3306/big_market_01?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
         username: root
         password: Jszc@2026
         type-class-name: com.zaxxer.hikari.HikariDataSource
@@ -87,7 +87,7 @@ mini-db-router:
           connection-test-query: SELECT 1
       db02:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.55.200:3306/big_market_02?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+        url: jdbc:mysql://192.168.52.200:3306/big_market_02?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
         username: root
         password: Jszc@2026
         type-class-name: com.zaxxer.hikari.HikariDataSource
@@ -112,7 +112,7 @@ mybatis:
 redis:
   sdk:
     config:
-      host: 192.168.55.200
+      host: 192.168.52.200
       port: 6379
       password: qwerty
       database: 1
