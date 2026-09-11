@@ -44,7 +44,7 @@ public class BehaviorRebateService implements IBehaviorRebateService {
             String bizId = behaviorEntity.getUserId() + Constants.UNDERLINE + dailyBehaviorRebateVO.getRebateType() + Constants.UNDERLINE + behaviorEntity.getOutBusinessNo();
             BehaviorRebateOrderEntity behaviorRebateOrderEntity = BehaviorRebateOrderEntity.builder()
                     .userId(behaviorEntity.getUserId())
-                    .orderId(RandomStringUtils.randomNumeric(12))
+                    .orderId(RandomStringUtils.randomNumeric(12))   // TODO orderId这样生成不太合理。
                     .behaviorType(dailyBehaviorRebateVO.getBehaviorType())
                     .rebateDesc(dailyBehaviorRebateVO.getRebateDesc())
                     .rebateType(dailyBehaviorRebateVO.getRebateType())
